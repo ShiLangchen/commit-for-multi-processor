@@ -57,6 +57,11 @@ git_url = input("请输入Git仓库地址：")
 destination_folder = "repo_folder"  # 修改为你想要保存的文件夹名
 if clone_repo(git_url, destination_folder):
     print("仓库成功克隆到本地")
+
+    # 创建/src文件夹用于存放文件
+    src_folder = os.path.join(destination_folder, "source")
+    os.makedirs(src_folder, exist_ok=True)
+
     # 打开克隆的仓库
     repo = git.Repo(destination_folder)
     # 获取所有commits
